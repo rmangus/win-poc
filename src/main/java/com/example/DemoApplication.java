@@ -12,7 +12,7 @@ public class DemoApplication {
     @RequestMapping("/")
     @ResponseBody
     String home() {
-      return "this is a new branch called POC-1";
+      return "this is a new branch";
     }
 
     public static void main(String[] args) {
