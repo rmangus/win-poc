@@ -32,7 +32,7 @@ public class DemoApplication {
     }
 
     @PostConstruct
-    public string myRealMainMethod() throws SQLException {
+    public String myRealMainMethod() throws SQLException {
         Statement stmt = dataSource.getConnection().createStatement();
         stmt.executeUpdate("DROP TABLE IF EXISTS ticks");
         stmt.executeUpdate("CREATE TABLE ticks (tick timestamp)");
