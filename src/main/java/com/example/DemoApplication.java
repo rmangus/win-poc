@@ -12,7 +12,7 @@ public class DemoApplication {
     @RequestMapping("/")
     @ResponseBody
     String home() {
-      return "testing automation for review apps AND auto-deploy to prod";
+      return "more testing 08/04/2016";
     }
 
     public static void main(String[] args) {
