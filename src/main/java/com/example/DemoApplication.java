@@ -33,13 +33,17 @@ public class DemoApplication {
 
     @PostConstruct
     public String myRealMainMethod() throws SQLException {
+    	String returnStuff = "";
+
         Statement stmt = dataSource.getConnection().createStatement();
         stmt.executeUpdate("DROP TABLE IF EXISTS ticks");
         stmt.executeUpdate("CREATE TABLE ticks (tick timestamp)");
         stmt.executeUpdate("INSERT INTO ticks VALUES (now())");
         ResultSet rs = stmt.executeQuery("SELECT tick FROM ticks");
         while (rs.next()) {
-            return "Read from DB: " + rs.getTimestamp("tick");
+            returnStuff = "Read from DB: " + rs.getTimestamp("tick");
         }
+
+        return returnStuff;
     }    
 }
