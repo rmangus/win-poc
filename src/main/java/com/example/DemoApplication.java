@@ -22,33 +22,11 @@ public class DemoApplication {
     @RequestMapping("/")
     @ResponseBody
     String home() {
-      //return "more testing 08/04/2016";
-    	String what = myRealMainMethod();
-    	return what;
+      return "welp";
     }
 
 
     public static void main(String[] args) {
         SpringApplication.run(DemoApplication.class, args);
     }
-
-    @PostConstruct
-    public String myRealMainMethod() {
-    	String returnStuff = "";
-    	
-    	try {
-	        Statement stmt = dataSource.getConnection().createStatement();
-	        stmt.executeUpdate("DROP TABLE IF EXISTS ticks");
-	        stmt.executeUpdate("CREATE TABLE ticks (tick timestamp)");
-	        stmt.executeUpdate("INSERT INTO ticks VALUES (now())");
-	        ResultSet rs = stmt.executeQuery("SELECT tick FROM ticks");
-	        while (rs.next()) {
-	            returnStuff = "Read from DB: " + rs.getTimestamp("tick");
-	        }
-    	} catch (SQLException e) {
-    		e.printStackTrace();
-    	}
-
-        return returnStuff;    	
-    }    
 }
