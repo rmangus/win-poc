@@ -1,6 +1,7 @@
 package com.example;
 
 import java.io.Serializable;
+import java.util.Date;
 import javax.persistence.*;
 
 @Entity
@@ -12,4 +13,7 @@ public class Order implements Serializable {
 
     @Column(nullable = false)
     public String orderNum;
+
+    @Column(nullable = false)
+    public Date orderDate;
 }
