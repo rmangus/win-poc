@@ -16,14 +16,16 @@ public class TestController {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
+    /*
     @RequestMapping("/")
     public String index() {
         return "Greetings from Spring Boot!";
     }
+    */
 
-    /*
     @RequestMapping("/")
     public static String readFromDB() throws Exception {
+        String junk = "junk";
         Connection connection = getConnection();
 
         Statement stmt = connection.createStatement();
@@ -32,12 +34,12 @@ public class TestController {
         stmt.executeUpdate("INSERT INTO ticks VALUES (now())");
         ResultSet rs = stmt.executeQuery("SELECT tick FROM ticks");
         while (rs.next()) {
+            junk = rs.getTimestamp("tick").toString();
             System.out.println("Read from DB: " + rs.getTimestamp("tick"));
         }
 
-        return "welp";
+        return junk;
     }
-
 
     private static Connection getConnection() throws URISyntaxException, SQLException {
         URI dbUri = new URI(System.getenv("DATABASE_URL"));
@@ -48,5 +50,4 @@ public class TestController {
 
         return DriverManager.getConnection(dbUrl, username, password);
     }
-    */
 }
