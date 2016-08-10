@@ -19,7 +19,7 @@ public class TestController {
     public Hashtable<Integer, String> readFromDB() throws Exception {
         Hashtable<Integer, String> junk = new Hashtable<Integer, String>();
 
-        jdbcTemplate.execute("CREATE TABLE IF NOT EXISTS ticks (SERIAL id PRIMARY KEY, tick timestamp)");
+        jdbcTemplate.execute("CREATE TABLE IF NOT EXISTS ticks (id SERIAL PRIMARY KEY, tick timestamp)");
         jdbcTemplate.execute("INSERT INTO ticks VALUES (now())");
         SqlRowSet srs = jdbcTemplate.queryForRowSet("SELECT id, tick FROM ticks");
         while (srs.next()) {
