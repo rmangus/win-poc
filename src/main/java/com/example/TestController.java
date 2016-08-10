@@ -1,19 +1,20 @@
 package com.example;
 
 import org.springframework.beans.factory.annotation.*;
+import org.springframework.boot.SpringApplication;
+import org.springframework.context.ApplicationContext;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.sql.*;
+import java.util.Arrays;
 
 @RestController
 public class TestController {
-    /*
     @Autowired
     JdbcTemplate jdbcTemplate;
-    */
 
     @RequestMapping("/")
     public String index() {
