@@ -18,7 +18,7 @@ public class TestController {
     @RequestMapping(path = "/", produces = "application/json")
     public Hashtable<Integer, String> readFromDB() throws Exception {
         Hashtable<Integer, String> junk = new Hashtable<Integer, String>();
-        
+
         jdbcTemplate.execute("CREATE TABLE IF NOT EXISTS ticks (id SERIAL PRIMARY KEY, tick timestamp)");
         jdbcTemplate.execute("INSERT INTO ticks VALUES (now())");
         SqlRowSet srs = jdbcTemplate.queryForRowSet("SELECT id, tick FROM ticks");
