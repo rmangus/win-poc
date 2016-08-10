@@ -18,8 +18,7 @@ public class TestController {
     public String readFromDB() throws Exception {
         String junk = "junk";
 
-        jdbcTemplate.execute("DROP TABLE IF EXISTS ticks");
-        jdbcTemplate.execute("CREATE TABLE ticks (tick timestamp)");
+        jdbcTemplate.execute("CREATE TABLE IF NOT EXISTS ticks (tick timestamp)");
         jdbcTemplate.execute("INSERT INTO ticks VALUES (now())");
         SqlRowSet srs = jdbcTemplate.queryForRowSet("SELECT tick FROM ticks");
         while (srs.next()) {
