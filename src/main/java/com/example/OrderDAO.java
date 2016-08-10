@@ -5,6 +5,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.List;
 
 @Repository
 @Transactional
@@ -17,4 +18,9 @@ public class OrderDAO {
         return;
     }
 
+    @SuppressWarnings("unchecked")
+    public List getAll() {
+        String hql = "from Order";
+        return entityManager.createQuery(hql).getResultList();
+    }
 }

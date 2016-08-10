@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.Date;
 import java.util.Hashtable;
+import java.util.List;
 
 @RestController
 public class OrderController {
@@ -35,6 +36,11 @@ public class OrderController {
         order.orderDate = new Date();
         orderDAO.create(order);
         return order;
+    }
+
+    @RequestMapping(path = "/orders", produces = "application/json")
+    public List<Order> getOrders() throws Exception {
+        return orderDAO.getAll();
     }
 
     @Autowired
