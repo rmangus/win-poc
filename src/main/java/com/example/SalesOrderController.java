@@ -32,7 +32,7 @@ public class SalesOrderController {
     public SalesOrder createOrder(@PathVariable String orderNum) throws Exception {
         SalesOrder salesOrder = new SalesOrder();
         salesOrder.orderNum = orderNum;
-        salesOrder.orderDate = new Date();
+        salesOrder.orderDate = new Date().toString();
         salesOrderDAO.create(salesOrder);
         return salesOrder;
     }

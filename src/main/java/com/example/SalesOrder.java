@@ -6,7 +6,6 @@ import javax.persistence.*;
 
 @Entity
 public class SalesOrder implements Serializable {
-
     @Id
     @GeneratedValue
     public Long id;
@@ -15,5 +14,5 @@ public class SalesOrder implements Serializable {
     public String orderNum;
 
     @Column(nullable = false)
-    public Date orderDate;
+    public String orderDate;
 }
