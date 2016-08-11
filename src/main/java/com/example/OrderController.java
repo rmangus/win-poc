@@ -39,7 +39,7 @@ public class OrderController {
     }
 
     @RequestMapping(path = "/orders", produces = "application/json")
-    public List<Order> getOrders() throws Exception {
+    public Iterable<Order> getOrders() throws Exception {
         return orderDAO.getAll();
     }
 

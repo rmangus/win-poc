@@ -1,5 +1,6 @@
 package com.example;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -10,17 +11,22 @@ import java.util.List;
 @Repository
 @Transactional
 public class OrderDAO {
-    @PersistenceContext
-    private EntityManager entityManager;
+    private OrderRepository orderRepository;
+
+    @Autowired
+    public void setOrderRepository(OrderRepository orderRepository) {
+        this.orderRepository = orderRepository;
+    }
+
 
     public void create(Order order) {
-        entityManager.persist(order);
+        orderRepository.save(order);
         return;
     }
 
     @SuppressWarnings("unchecked")
-    public List getAll() {
+    public Iterable<Order> getAll() {
         String hql = "from Order";
-        return entityManager.createQuery(hql).getResultList();
+        return orderRepository.findAll();
     }
 }
