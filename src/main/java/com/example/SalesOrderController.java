@@ -22,7 +22,7 @@ public class SalesOrderController {
         Hashtable<Integer, String> junk = new Hashtable<Integer, String>();
         while (srs.next()) {
             junk.put(srs.getInt("id"), srs.getTimestamp("tick").toString());
-            System.out.println("Read from DB: " + srs.getInt("id") + " : " + srs.getTimestamp("tick"));
+            System.out.println("Read from ______ DB: " + srs.getInt("id") + " : " + srs.getTimestamp("tick"));
         }
 
         return junk;
