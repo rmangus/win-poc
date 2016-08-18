@@ -15,11 +15,11 @@ public class SalesOrderController {
 
     @RequestMapping(path = "/", produces = "application/json")
     public Hashtable<Integer, String> readFromDB() throws Exception {
-        Hashtable<Integer, String> junk = new Hashtable<Integer, String>();
-
         jdbcTemplate.execute("CREATE TABLE IF NOT EXISTS ticks (id SERIAL PRIMARY KEY, tick timestamp)");
         jdbcTemplate.execute("INSERT INTO ticks (tick) VALUES (now())");
         SqlRowSet srs = jdbcTemplate.queryForRowSet("SELECT id, tick FROM ticks");
+
+        Hashtable<Integer, String> junk = new Hashtable<Integer, String>();
         while (srs.next()) {
             junk.put(srs.getInt("id"), srs.getTimestamp("tick").toString());
             System.out.println("Read from DB: " + srs.getInt("id") + " : " + srs.getTimestamp("tick"));
